@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>calculating difference between two dates..</title>
+
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+        body {
+            background-image: linear-gradient(135deg, #fdfcfb 0%, #e2d1c3 100%);
+            min-height: 100vh;
+        }
+
+        .title {
+            text-align: center;
+            color: black;
+            margin-top: 70px;
+            margin: 30px auto;
+            display: block;
+            font-size: 25px;
+            color: #b30059;
+        }
+
+        .parent-container {
+            width: 170px;
+            border-radius: 15px;
+            background-image: linear-gradient(to right, #ef32d9 0%, #89fffd 51%, #ef32d9 100%);
+            margin: 20 auto;
+            margin-left: 390px;
+            padding: 15px 45px;
+            text-align: center;
+            text-transform: uppercase;
+            transition: 0.5s;
+            background-size: 200% auto;
+            color: white;
+            box-shadow: 0 0 20px #eee;
+            display: block;
+        }
+
+        .btn-grad:hover {
+            background-position: right center;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .container {
+            display: block;
+            margin: 5px auto;
+            padding-top: 5px;
+            width: 150px;
+            font-size: 5px;
+        }
+
+        input {
+            width: 100%;
+            height: 17px;
+            margin-top: 10px;
+            padding: 5px;
+            font-size: 15px;
+        }
+
+        #dayCount {
+            text-align: center;
+            margin-top: 30px;
+            color: #3d0066;
+        }
+
+        .btn {
+            background-image: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);
+            font-size: 15px;
+            padding: 7px 10px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            display: block;
+            margin: 10px auto;
+            margin-top: 20px;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            background-image: linear-gradient(to right, #ff00cc 0%, #333399 51%, #ff00cc 100%);
+            text-align: center;
+            transition: 0.5s;
+            background-size: 200% auto;
+            color: white;
+            box-shadow: 0 0 20px #eee;
+
+        }
+
+        .btn-grad:hover {
+            background-position: right center;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .label {
+            font-size: 15px;
+            color: #3d0066;
+            font-style: normal;
+        }
+    </style>
+
+</head>
+
+<body>
+    <h1 class="title">Calculate Difference Between Two Dates..! </h1>
+    <div class="parent-container">
+        <div class="container">
+            <label for="firstDate" class="label"><b>First Date :</b></label>
+            <input type="date" id="firstDate">
+            <br> <br>
+
+            <label for="secondDate" class="label"><b>Second Date :</b></label>
+            <input type="date" id="secondDate">
+        </div>
+
+
+        <button type="button" class="btn" onclick="calculate()"> Calculate Date</button>
+        <button type="button" class="btn" onclick="reset()">Reset All</button>
+
+        <h4 id="dayCount"></h4>
+    </div>
+
+    <script>
+        function calculate() {
+            const firstDate = document.getElementById('firstDate').value;
+            const secondDate = document.getElementById('secondDate').value;
+
+            const date1 = new Date(firstDate);
+            const date2 = new Date(secondDate);
+
+            const difference = Math.abs(date2 - date1);
+
+            const days = Math.round(difference / (1000 * 60 * 60 * 24));
+
+            const dayElement = document.getElementById('dayCount');
+            dayElement.innerText = ` The Difference between Two Dates is ${days}  ${days > 1 ? 'days' : 'day'}.`;
+
+        }
+
+        function reset() {
+            document.getElementById('firstDate').value = "";
+            document.getElementById('secondDate').value = "";
+            document.getElementById('dayCount').innerText = "";
+        }
+
+    </script>
+
+</body>
+
+</html>
